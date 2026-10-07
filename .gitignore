@@ -1,0 +1,69 @@
+# --- segredos -------------------------------------------------------------
+.env
+.streamlit/secrets.toml
+*.key
+
+# --- dados brutos e caches (grandes, não versionar) ----------------------
+data/raw/
+data/cache_clima/
+data/cache_llm/
+data/outbox.sqlite
+data/apolices.sqlite
+data/apolices.sqlite-*
+data/outbox.sqlite-*
+*.gz.part
+
+# Os conjuntos curados PODEM ser versionados se forem pequenos.
+# Descomente para ignorá-los:
+# data/curated/
+
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Jupyter --------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- sistema operacional --------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- editores -------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+
+# --- saídas temporárias ---------------------------------------------------
+saida/
+/tmp/
+
+# Relatório gerado por scripts/diagnostico.py
+diagnostico.txt
+
+# --- entregáveis ----------------------------------------------------------
+#
+# Os documentos que vão por e-mail (relatório, resumo executivo, ZIP do
+# código, exemplos de mensagens, diagramas) NÃO são versionados.
+#
+# Motivo: são arquivos gerados, pesam alguns megabytes e — principalmente —
+# costumam ser editados à mão antes do envio. Versioná-los criaria conflito
+# entre a versão que foi enviada e a que está no repositório, sem que nenhuma
+# das duas fosse mais correta que a outra.
+#
+# Eles continuam sendo gerados normalmente por:
+#     python scripts/gerar_entregaveis.py
+Desafio5_Artefatos/
+# documentos reais: ficam só na máquina de quem testa (direitos e dados de terceiros)
+data/apolices_reais/*.pdf
+data/apolices_reais/*.png
+data/apolices_reais/*.jpg

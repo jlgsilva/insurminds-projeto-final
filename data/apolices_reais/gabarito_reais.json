@@ -1,0 +1,1019 @@
+{
+ "descricao": "Gabarito dos 5 documentos reais usados para validar a plataforma. Os PDFs NÃO estão no repositório: três são condições gerais públicas de D&O (registradas na SUSEP) e dois são apólices emitidas de Seguro Garantia com dados de terceiros. Os arquivos são reconhecidos pelo SHA-256.",
+ "anotacao": "Cláusulas das condições gerais anotadas com apoio de IA (Claude), a partir da leitura integral de cada documento, com evidência literal (≤ 25 palavras) verificada por script contra o texto. Níveis são julgamento técnico e precisam de revisão por especialista; a presença/ausência é o critério mais objetivo.",
+ "criterios": "Condições gerais: coberturas opcionais (condições especiais/coberturas adicionais) contam como presentes (opcional=true). AGR-01 só é presente se houver menção explícita a crédito rural, Proagro ou Banco Central em cobertura.",
+ "documentos": [
+  {
+   "identificador": "REAL-AXA",
+   "sha256": "1798723c7a3078496bfc9dcedcc5a02ac5e1a5466784264d517f3ad9f8bc5f19",
+   "ramo": "do",
+   "tipo": "condicoes_gerais",
+   "seguradora": "AXA Seguros S.A.",
+   "processo_susep": "15414.901016/2017-01",
+   "versao": "Versão Vigente 12/2025 V1",
+   "paginas": 104,
+   "clausulas": [
+    {
+     "codigo": "ESC-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 11,
+     "secao": "Glossário de Termos Técnicos – Administrador",
+     "evidencia": "d) Empregado com poder de decisão ou de representação da Empresa ou que atue em nome da Empresa como procurador formalmente constituído",
+     "justificativa": "A definição abrange diretores, conselheiros, membros de qualquer órgão estatutário (inclui conselho fiscal), empregados com poder de gestão e procuradores, mas não menciona administrador de fato e cônjuge/espólio só entram via cláusula particular opcional.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 18,
+     "secao": "4.1",
+     "evidencia": "Cobertura A - Pagamento ao Segurado: pagamento ao Administrador ou a Terceiros por Perda Indenizável decorrente de uma Reclamação coberta nos termos da Apólice.",
+     "justificativa": "Há Side A como cobertura básica; não há limite Side A DIC geral, apenas limite adicional opcional restrito a Presidente, DRI e Diretor Financeiro após esgotamento do LMG.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 18,
+     "secao": "4.2",
+     "evidencia": "Cobertura B - Reembolso ao Tomador: reembolso à Empresa ou ao Segurado por adiantamento do pagamento total ou parcial em nome do Administrador",
+     "justificativa": "O reembolso à Empresa está previsto na cobertura básica, sujeito à franquia definida na Especificação (cláusula 9).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-04",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 63,
+     "secao": "Condição Particular - Companhias Abertas – Reclamações de Mercados de Capitais, item 3.1",
+     "evidencia": "A Seguradora reembolsará o Segurado pelas Perdas indenizáveis decorrentes de Reclamações no Mercado de Capitais, movidas contra os Segurados durante o Período de Vigência",
+     "justificativa": "Side C opcional, restrito a reclamações de mercado de capitais de companhias abertas, exige reclamação conjunta com administradores, tem franquia específica e não concede limite adicional (compartilha o LMI/LMG).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-05",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 42,
+     "secao": "11.1",
+     "evidencia": "As disposições deste contrato aplicam-se à Reclamação em qualquer lugar do mundo, exceto se disposto de outro modo na Especificação.",
+     "justificativa": "Cobertura mundial sem exclusão geral de EUA/Canadá, mas diversas extensões (empresa contra administrador, novas subsidiárias, entidade externa) excluem reclamações oriundas dos EUA/Canadá.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-06",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 27,
+     "secao": "5.12",
+     "evidencia": "(1) não possua ativos totais que excedam o percentual de 30% (trinta por cento) dos ativos totais consolidados da Empresa",
+     "justificativa": "Subsidiárias com controle >50% existentes no início da vigência são cobertas; a extensão opcional inclui automaticamente novas controladas até 30% dos ativos, fora de EUA/Canadá e não financeiras, com 90 dias para as demais.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 36,
+     "secao": "7.1",
+     "evidencia": "assim como o total máximo indenizável por este contrato de seguro durante todo o Período de Vigência",
+     "justificativa": "O LMG é definido por reclamação e como agregado da vigência (Limite Agregado = LMG x 1), com cancelamento automático ao ser atingido.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 79,
+     "secao": "Condição Particular - Termo de Ajustamento de Conduta (TAC) ou Termo de Compromisso (TC)",
+     "evidencia": "serão pagos pela Seguradora observando-se o teto de 30% (trinta por cento) do Limite Máximo de Garantia da Apólice (LMG).",
+     "justificativa": "Cada cobertura/extensão tem LMI próprio fixado na Especificação e há sublimites fixos em algumas cláusulas (TAC/TC 30% do LMG, aprovação retroativa de pré-investigação até 25% do LMI).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "LIM-03",
+     "nivel": "excluida",
+     "opcional": false,
+     "pagina": 53,
+     "secao": "23.1",
+     "evidencia": "Os Limite Máximo de Garantia e Limites Máximos de Indenização por Cobertura Contratada/Limite Agregado deste contrato de seguro não poderão",
+     "justificativa": "A cláusula 23 veda expressamente a reintegração do LMG, dos LMIs e do Limite Agregado.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 38,
+     "secao": "9.5",
+     "evidencia": "pagamento de Perda Indenizável para a qual haja Franquia nos termos dessa Apólice, a Seguradora deverá ser reembolsada, pelo Segurado, até o limite dessa Franquia",
+     "justificativa": "A franquia é definida na Especificação, aplicada por cobertura e por fato gerador, sem isenção para o Side A, e o Segurado deve reembolsar a franquia paga pela Seguradora.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 40,
+     "secao": "10.2.3 g)",
+     "evidencia": "Dentro do Limite Máximo de Garantia da Apólice previsto no contrato de seguro, a Seguradora responderá, também, pelas custas judiciais",
+     "justificativa": "Custos de defesa integram a Perda Indenizável e são pagos dentro do LMG, sem limite adicional.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-02",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 34,
+     "secao": "6.4",
+     "evidencia": "Tendo sido adiantado qualquer valor relativo a Custos de Defesa, ou paga qualquer Indenização indevidamente, a Seguradora terá o direito de ressarcir esses valores",
+     "justificativa": "O adiantamento de custos de defesa só aparece implicitamente (com direito de ressarcimento), sem procedimento nem prazo, e na exclusão de corrupção (6.19) os custos só são reembolsados após decisão final favorável.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-03",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 39,
+     "secao": "10.2.3 b)",
+     "evidencia": "Os Segurados podem escolher livremente seus respectivos advogados;",
+     "justificativa": "A livre escolha do advogado é expressa nas condições gerais, embora a cobertura adicional de custo de defesa condicione o reembolso de honorários à aprovação prévia da Seguradora.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-04",
+     "nivel": "ausente",
+     "opcional": false,
+     "pagina": null,
+     "secao": "",
+     "evidencia": "",
+     "justificativa": "Não há cláusula de separabilidade das declarações da proposta nem das exclusões de conduta; ao contrário, a exclusão 6.4 estende o dolo de sócios controladores e dirigentes.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-05",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 90,
+     "secao": "Cláusula Particular – Multas e Penalidade",
+     "evidencia": "a Seguradora pagará multas e penalidades cíveis e administrativas assim como os custos de defesas relacionadas às Reclamações contra o Segurado",
+     "justificativa": "Multas são excluídas na base (6.11) e só cobertas por cláusula opcional condicionada à desconsideração da personalidade jurídica da Empresa.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 58,
+     "secao": "28 – VI Data Retroativa de Ocorrências",
+     "evidencia": "as Reclamações de Terceiros relativas a Perdas ocorridas a partir da Data Limite de Retroatividade, indicada na Especificação.",
+     "justificativa": "A retroatividade é regulada com Data Limite pactuada e indicada na Especificação, com manutenção obrigatória nas renovações (14.3/14.4).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 57,
+     "secao": "28 – IV Prazo Complementar",
+     "evidencia": "Será concedido ao Segurado, sem qualquer ônus, um prazo adicional de no mínimo 1 (um) ano, conforme mencionado na Especificação da Apólice",
+     "justificativa": "Prazo complementar gratuito de no mínimo 1 ano e prazo suplementar opcional de no mínimo 1 ano mediante prêmio adicional, conforme a regulamentação, além de extensão opcional de 10 anos para aposentados.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 56,
+     "secao": "28 – III Cláusula de Notificação",
+     "evidencia": "As Notificações deverão ser apresentadas tão logo o Segurado tome conhecimento de fatos ou circunstâncias relevantes que possam acarretar uma Reclamação futura",
+     "justificativa": "A apólice aceita notificação de circunstâncias durante a vigência, a ser feita tão logo o Segurado tome conhecimento, vinculando reclamações futuras.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 55,
+     "secao": "27 a) Operação",
+     "evidencia": "a cobertura aqui prevista ficará limitada somente a fatos, atos ou omissões praticados antes da data efetiva da operação.",
+     "justificativa": "Em mudança de controle a cobertura fica limitada a atos anteriores, sem run-off plurianual previsto, e a Seguradora pode cancelar a apólice em 15 dias ou cobrar prêmio adicional.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 34,
+     "secao": "6.4",
+     "evidencia": "Confissão do Segurado, mesmo que por meio de acordo de cooperação com as autoridades, atestando sua conduta, ou (ii) Decisão judicial transitada em julgado",
+     "justificativa": "A exclusão de dolo/culpa grave só se aplica após confissão ou decisão final, com custos adiantados sujeitos a ressarcimento, mas abrange culpa grave e imputa o dolo de controladores e dirigentes sem separabilidade.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "EXC-02",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 35,
+     "secao": "6.15",
+     "evidencia": "Qualquer Reclamação trazida pela Empresa ou por um Segurado em desfavor de outro Segurado, salvo disposição em contrário nesta Apólice;",
+     "justificativa": "A exclusão base não tem exceções (nem ação social, administrador judicial ou jurisdição estrangeira); a recompra depende de condições particulares opcionais, que ainda excluem EUA/Canadá.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "EXC-03",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 36,
+     "secao": "6.24",
+     "evidencia": "Danos ambientais, que são enquadrados em outro ramo de seguro, denominado seguro de responsabilidade civil de riscos ambientais",
+     "justificativa": "A exclusão de danos ambientais é ampla e, pelo caput da cláusula 6, alcança também os custos de defesa do administrador.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "EXC-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 36,
+     "secao": "6.21",
+     "evidencia": "6.21 Ataque cibernético;",
+     "justificativa": "Exclusão cibernética genérica de reclamações relacionadas ou decorrentes de ataque cibernético, inclusive custos de defesa, sem ressalva para falha de supervisão do administrador.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-05",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 33,
+     "secao": "6.1 / 6.2",
+     "evidencia": "Qualquer Reclamação conhecida pelo Segurado antes do início do Período de Vigência desta Apólice",
+     "justificativa": "O conhecimento é imputado ao Segurado e há data de corte objetiva para litígios anteriores (Data de Continuidade, 6.2), embora esse termo não seja definido no glossário.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 47,
+     "secao": "17.1",
+     "evidencia": "Total ou parcialmente, a qualquer tempo, mediante acordo entre as partes contratantes:",
+     "justificativa": "Cancelamento por acordo entre as partes, automático por esgotamento do LMG ou falta de pagamento (aviso de 10 dias para parcelas), e resolução por agravamento do risco com efeito em 30 dias.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-02",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 85,
+     "secao": "Condição Particular – Cláusula Compromissória de Arbitragem",
+     "evidencia": "A disputa será submetida ao Centro de Arbitragem e Mediação da Câmara de Comércio Brasil-Canadá",
+     "justificativa": "Há cláusula compromissória opcional, de adesão facultativa pelo Segurado, com câmara indicada (CAM-CCBC) e sede em São Paulo; na base vale o foro do domicílio do Segurado.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 46,
+     "secao": "16.1",
+     "evidencia": "a Seguradora estará sub-rogada nos direitos e ações do Segurado contra Terceiros cujos atos, fatos ou omissões tenham causado os prejuízos indenizados",
+     "justificativa": "A sub-rogação é limitada a Terceiros (definição exclui Segurados), mas não há renúncia expressa e a Seguradora mantém direito de regresso em caso de dolo (10.2.3 b).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-04",
+     "nivel": "ausente",
+     "opcional": false,
+     "pagina": null,
+     "secao": "",
+     "evidencia": "",
+     "justificativa": "Não há cláusula de ordem/prioridade de pagamento das coberturas em favor do Side A.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-05",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 5,
+     "secao": "1. Apresentação",
+     "evidencia": "O contrato de seguro será emitido em moeda corrente nacional, ou seja, todos os valores referentes aos valores segurados, Franquias, Prêmios e outros,",
+     "justificativa": "Limites em reais, salvo convenção; em seguro em moeda estrangeira a conversão usa a data do efetivo pagamento (10.1.3) e a atualização é pelo IPCA (cláusula 22).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "AGR-01",
+     "nivel": "ausente",
+     "opcional": false,
+     "pagina": 72,
+     "secao": "Condição Particular - Inabilitação e Recolocação do Administrador",
+     "evidencia": "a) Decisão Final Administrativa (CVM, BACEN, etc.) ou Judicial: Impondo a sanção",
+     "justificativa": "Não há cobertura que mencione crédito rural, Proagro ou o Banco Central como regulador; o BACEN aparece apenas na lista de documentos de uma cláusula opcional (critério uniforme com as demais condições gerais).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "AGR-02",
+     "nivel": "excluida",
+     "opcional": false,
+     "pagina": 36,
+     "secao": "6.24",
+     "evidencia": "Danos ambientais, que são enquadrados em outro ramo de seguro, denominado seguro de responsabilidade civil de riscos ambientais (RC Riscos Ambientais)",
+     "justificativa": "A matéria ambiental só aparece para excluir cobertura (6.24 e ressalva de Dano Ambiental na cláusula de crise), sem extensão para processos ambientais contra administradores.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "AGR-03",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 81,
+     "secao": "Condição Particular – Falência, Recuperação Judicial e Insolvência",
+     "evidencia": "para os Custos de Defesa relacionados a Reclamações decorrentes de falência, recuperação judicial e insolvência da Empresa.",
+     "justificativa": "Na base, pedido de recuperação/insolvência é Operação (cobertura limitada a atos anteriores e possível cancelamento) e a 6.20 exclui fatos anteriores; a cláusula opcional cobre apenas custos de defesa e afasta a regra de Operação.",
+     "confianca": "media"
+    }
+   ]
+  },
+  {
+   "identificador": "REAL-ALLIANZ",
+   "sha256": "1778f9d09c187996e5cef8fda73a51c89ced0d0dc1772aaa4f327a9f5eb9a6cc",
+   "ramo": "do",
+   "tipo": "condicoes_gerais",
+   "seguradora": "Allianz Seguros S.A.",
+   "processo_susep": "15414.901113/2017-96",
+   "versao": "Versão dezembro/2025",
+   "paginas": 75,
+   "clausulas": [
+    {
+     "codigo": "ESC-01",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 47,
+     "secao": "Cláusula 39 (Definições) – SEGURADO",
+     "evidencia": "do comitê de gestão, do conselho fiscal ou do conselho consultivo; Diretor independente ou Diretor de fato de qualquer Empresa",
+     "justificativa": "A definição de Segurado alcança administrador de fato, conselho fiscal, procuradores (alínea b), cônjuge/companheiro (alínea g) e espólio/herdeiros (alínea h).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 9,
+     "secao": "Cláusula 4, I – Cobertura A",
+     "evidencia": "Essa cobertura será aplicável, exclusivamente, se o Segurado não for indenizado pelo Tomador do Seguro por tal Perda",
+     "justificativa": "Há Side A para perda não indenizada por impossibilidade legal ou insolvência; limite adicional dedicado existe apenas como opção (Limite Adicional para Segurados Nomeados/Conselheiros Independentes), e franquia pode ser aplicada.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 9,
+     "secao": "Cláusula 4, II – Cobertura B",
+     "evidencia": "A Seguradora deverá reembolsar o Tomador do Seguro por qualquer Perda resultante de uma Reclamação",
+     "justificativa": "Reembolso à companhia previsto, com franquia da Especificação a cargo do Tomador, dispensada em caso de proibição legal ou insolvência, e adiantamento ao Segurado após 30 dias.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-04",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 49,
+     "secao": "Seção II – Condição Especial Cobertura C, Cláusula 1",
+     "evidencia": "A Seguradora pagará para, ou em nome do Tomador do Seguro, qualquer Perda resultante de uma Reclamação de Valores Mobiliários feita contra Empresa elencada",
+     "justificativa": "Side C oferecida como Condição Especial opcional, restrita a Reclamações de Valores Mobiliários, com franquia e sublimite integrantes do LMG (cláusula 25.4).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-05",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 36,
+     "secao": "Cláusula 36",
+     "evidencia": "CLÁUSULA 36. ÂMBITO GEOGRAFICO DE COBERTURA 36.1. Conforme disposto na Especificação da Apólice.",
+     "justificativa": "O âmbito geográfico é remetido à Especificação, sem cobertura mundial expressa; há exclusões pontuais de EUA/Canadá apenas para reclamações entre segurados/da empresa (Cl. 5 VII-VIII e 7 V).",
+     "confianca": "baixa"
+    },
+    {
+     "codigo": "ESC-06",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 14,
+     "secao": "Cláusula 6, I – Cobertura automática para nova subsidiária",
+     "evidencia": "tal entidade será considerada uma Subsidiária e será automaticamente coberta pela Apólice, com efeitos a partir da data em que se tornou uma Subsidiária",
+     "justificativa": "Inclusão automática de novas subsidiárias (controle >50%), salvo ativos acima do limite da Especificação (30 dias), listagem nos EUA/Canadá/Austrália/RU, instituições financeiras, SAF, apostas, ativos digitais e SPAC.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 31,
+     "secao": "Cláusula 25, I – 25.1",
+     "evidencia": "para cada Perda e para todas as Perdas no total, não excederá o Limite Máximo de Garantia da Apólice",
+     "justificativa": "O LMG é agregado para todas as Perdas da vigência, com valor fixado na Especificação e cancelamento da apólice ao seu esgotamento.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 31,
+     "secao": "Cláusula 25, I – 25.4",
+     "evidencia": "Cada sublimite Máximo de Indenização, constante na Especificação, corresponde ao máximo que a Seguradora pagará pela cobertura a que se aplica",
+     "justificativa": "As extensões têm sublimites (LMI) definidos na Especificação, integrantes do LMG e não comunicáveis; valores fixos só em casos pontuais (ex.: 20% para custos de pré-investigação).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "LIM-03",
+     "nivel": "excluida",
+     "opcional": false,
+     "pagina": 31,
+     "secao": "Cláusula 25, I – 25.5",
+     "evidencia": "Os sublimites Máximo de Indenização não serão reintegrados, sendo possível o seu aumento mediante acordo entre a Seguradora e o Tomador do Seguro.",
+     "justificativa": "Não há reintegração: os sublimites não são reintegrados e o esgotamento do LMG extingue/cancela a apólice (cl. 22.2 e 31.3), cabendo apenas aumento negociado.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "LIM-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 9,
+     "secao": "Cláusula 4, I – Cobertura A",
+     "evidencia": "A Franquia ou participação obrigatória do Segurado, caso estabelecida pela Seguradora, constará na Especificação da Apólice e deverá ser deduzida da Indenização",
+     "justificativa": "As condições permitem franquia também na Cobertura A (Side A), deduzida da indenização ao administrador, o que é desfavorável.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 31,
+     "secao": "Cláusula 25, I – 25.3",
+     "evidencia": "Quaisquer quantias pagas pela Seguradora sob esta Apólice em relação a uma Perda consumirão o Limite Máximo de Garantia da Apólice.",
+     "justificativa": "Gastos com Defesa integram a Perda e consomem o LMG, ainda que com LMI próprio da Cobertura de Gastos com Defesa (cl. 18.1 e 25.2).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-02",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 28,
+     "secao": "Cláusula 18 – 18.15 (e 18.9/18.11)",
+     "evidencia": "A Seguradora deve pagar os Gastos com Defesa ou Custos de Investigação para ou em nome do Segurado prontamente conforme incorrido",
+     "justificativa": "Há pagamento em até 30 dias da documentação (18.15), mas as cláusulas 18.9 e 18.11 condicionam o reembolso de honorários ao término/trânsito em julgado da ação, gerando restrição e conflito.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-03",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 27,
+     "secao": "Cláusula 18 – 18.4 e 18.4.2",
+     "evidencia": "A Seguradora exigirá a apresentação de 3 (três) propostas de honorários aos Segurados",
+     "justificativa": "A livre escolha é garantida (18.4), mas condicionada a três propostas de honorários, análise de razoabilidade, validação prévia do contrato e consentimento prévio para os gastos.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 32,
+     "secao": "Cláusula 27 – 27.1",
+     "evidencia": "cujo conhecimento é extensível a todos os Segurados e a divisibilidade não se aplica, sendo o incumprimento oponível a todos os Segurados",
+     "justificativa": "A separabilidade não alcança as declarações da proposta; na execução (27.2) e na exclusão de conduta há não imputação, mas sujeita a apuração pela Seguradora.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-05",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 13,
+     "secao": "Cláusula 5, XIII – Cobertura para multas e penalidades cíveis e/ou administrativas",
+     "evidencia": "A Seguradora deverá pagar as multas e penalidades cíveis e administrativas impostas ao Segurado, relacionadas a atos danosos praticados no exercício de suas funções",
+     "justificativa": "Multas cíveis e administrativas são cobertas como extensão contratável com LMI próprio, excluídas multas criminais, contratuais e as fixadas contra o Tomador.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 40,
+     "secao": "Cláusula 39 (Definições) – DATA DE RETROATIVIDADE",
+     "evidencia": "DATA DE RETROATIVIDADE: data igual ou anterior ao início da vigência da primeira de uma série sucessiva e ininterrupta de",
+     "justificativa": "A retroatividade é regulada, com data pactuada na Especificação e cobertura de atos danosos ocorridos no Período de Retroatividade (cl. 3.1).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 15,
+     "secao": "Cláusula 6, III – Cobertura para prazo adicional",
+     "evidencia": "60 (sessenta) dias, automaticamente e sem cobrança de prêmio extra, salvo se disposto em contrário na Especificação da Apólice",
+     "justificativa": "Prazo adicional automático e gratuito de 60 dias e opcional de 12 meses mediante prêmio adicional, além de prazo vitalício para Antigos Segurados.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 24,
+     "secao": "Cláusula 14 – 14.3",
+     "evidencia": "qualquer Reclamação posterior decorrente, baseada ou atribuível a tais fatos será aceita pela Seguradora como havendo sido feita ao mesmo tempo",
+     "justificativa": "Aceita notificação de circunstâncias por escrito durante a vigência, com detalhes e prova documental, vinculando reclamações futuras à apólice.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 15,
+     "secao": "Cláusula 6, III – Cobertura para prazo adicional",
+     "evidencia": "a Seguradora poderá, a seu exclusivo critério, fazer uma cotação para um Prazo Adicional de run-off de até 72 (setenta e dois) meses",
+     "justificativa": "Em mudança de controle não há direito a prazo adicional; o run-off de até 72 meses fica a exclusivo critério da Seguradora, com termos e prêmio a definir.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "EXC-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 16,
+     "secao": "Cláusula 7, I – Cláusula de exclusão de conduta",
+     "evidencia": "A PRESENTE CLÁUSULA SOMENTE SERÁ APLICADA MEDIANTE A APRESENTAÇÃO DE DECISÃO FINAL JUDICIAL OU ARBITRAL, CONFISSÃO DO SEGURADO, INCLUSIVE EM ACORDO DE DELAÇÃO PREMIADA",
+     "justificativa": "A exclusão exige decisão final, confissão ou reconhecimento de órgão oficial (não só trânsito em julgado), com não imputação entre segurados, mas devolução dos custos adiantados (18.16).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-02",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 18,
+     "secao": "Cláusula 7, V – Exclusão de reclamações de tomador contra segurado nos EUA e Canadá",
+     "evidencia": "QUALQUER RECLAMAÇÃO NOS ESTADOS UNIDOS DA AMÉRICA E TERRITÓRIOS E CANADÁ APRESENTADA POR OU EM NOME DE UMA EMPRESA CONTRA UM SEGURADO",
+     "justificativa": "Não há exclusão geral de segurado contra segurado; a exclusão limita-se aos EUA/Canadá e excetua administrador judicial, ação derivada de acionistas, contribuição e gastos com defesa.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-03",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 18,
+     "secao": "Cláusula 7, VI – Cláusula de exclusão de poluição",
+     "evidencia": "DESCARGA, DISPERSÃO, LIBERAÇÃO OU ESCAPE INTENCIONAL OU ACIDENTAL, EXCETO SE CONTRATADA A COBERTURA ADICIONAL DE RESPONSABILIDADE CIVIL DO ADMINISTRADOR POR DANO AMBIENTAL",
+     "justificativa": "A exclusão de poluição alcança qualquer Perda, inclusive gastos com defesa, salvo contratação da cobertura adicional ambiental.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "EXC-04",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 44,
+     "secao": "Cláusula 39 (Definições) – PERDA",
+     "evidencia": "MULTAS RELATIVAS A UMA VIOLAÇÃO DE QUALQUER REGULAMENTO DE PROTEÇÃO DE DADOS, EXCETO QUANDO CONTRATADA A COBERTURA PARA RISCOS CIBERNÉTICOS",
+     "justificativa": "Não há exclusão cibernética ampla nas condições gerais; apenas multas de proteção de dados saem do conceito de Perda e há cobertura afirmativa opcional para Evento Cibernético.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-05",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 17,
+     "secao": "Cláusula 7, II – Exclusão de reclamações/circunstâncias anteriores",
+     "evidencia": "QUALQUER SEGURADO OU A EMPRESA TENHA SIDO NOTIFICADO, TINHA CIÊNCIA OU DEVERIA RAZOAVELMENTE TER CONHECIMENTO",
+     "justificativa": "A data de corte é objetiva (Data de Continuidade), mas o conhecimento de qualquer segurado ou da empresa, inclusive presumido, aciona a exclusão.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-01",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 35,
+     "secao": "Cláusula 32 – 32.2 (e Cláusula 31)",
+     "evidencia": "podendo a Seguradora, no prazo de 15 (quinze) dias contados a partir da data do recebimento de tal comunicação, optar pelo cancelamento da Apólice",
+     "justificativa": "Além de cancelamento por acordo, fraude, falta de pagamento e esgotamento do LMG, a Seguradora pode cancelar após mudança de controle/insolvência sem devolver prêmio.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 29,
+     "secao": "Cláusula 20 – Resolução de disputas – arbitragem",
+     "evidencia": "Caso seja do seu interesse, o Segurado manifestará o seu consentimento livre com a solução da controvérsia por meio da arbitragem",
+     "justificativa": "Arbitragem facultativa mediante cláusula compromissória firmada em apartado, sem câmara indicada; foro no domicílio do Segurado (cl. 34).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-03",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 30,
+     "secao": "Cláusula 23 – 23.4",
+     "evidencia": "A Seguradora não exercerá qualquer direito de sub-rogação contra uma pessoa física Segurada, excetuadas as seguintes hipóteses",
+     "justificativa": "Há renúncia expressa à sub-rogação contra pessoas físicas seguradas, salvo conduta dolosa reconhecida em decisão final irrecorrível ou pagamento em duplicidade.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-04",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 29,
+     "secao": "Cláusula 22 – Prioridade de pagamento de perda",
+     "evidencia": "em primeiro lugar, os Gastos com Defesa de qualquer pessoa física Segurada, qualificáveis como Perda",
+     "justificativa": "Há ordem de pagamento que prioriza gastos de defesa e demais perdas das pessoas físicas seguradas antes das perdas da empresa.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-05",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 9,
+     "secao": "Cláusula 2 – 2.4, e)",
+     "evidencia": "todos os valores constantes dos documentos que integram este contrato de seguro deverão ser expressos em moeda corrente nacional",
+     "justificativa": "Limites em moeda nacional (exceto operações em moeda estrangeira), atualização pelo IPCA (cl. 13), sem critério de conversão na data do sinistro nas condições gerais.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "AGR-01",
+     "nivel": "ausente",
+     "opcional": false,
+     "pagina": 13,
+     "secao": "Cláusula 5, XIII (referência genérica)",
+     "evidencia": "resultantes de procedimento ou processo conduzido por qualquer órgão estatal ou agência reguladora e fiscalização das suas atividades",
+     "justificativa": "Não há cobertura de crédito rural/Proagro nem menção ao Banco Central como regulador em cobertura; existe apenas cobertura regulatória genérica.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "AGR-02",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 66,
+     "secao": "Seção III – Cobertura Adicional de RC do Administrador por Dano Ambiental, Cláusula 1",
+     "evidencia": "a Seguradora garantirá o reembolso ou o pagamento de Gastos com Defesa, acordos e/ou Indenizações decorrentes de e/ou relacionadas a reclamações movidas contra o Segurado",
+     "justificativa": "Cobertura ambiental do administrador oferecida como adicional, condicionada a responsabilização por sentença transitada em julgado, excluindo multas, clean-up (salvo defesa) e EUA/Canadá.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "AGR-03",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 35,
+     "secao": "Cláusula 32 – 32.1, b, (ii)",
+     "evidencia": "após a liquidação, falência, Insolvência Financeira, intervenção, regime especial de direção fiscal, recuperação extrajudicial, recuperação judicial ou liquidação de dívidas",
+     "justificativa": "Após recuperação judicial/falência a cobertura cessa para atos posteriores e a Seguradora pode cancelar (32.2); reclamações do administrador judicial só via cobertura adicional opcional.",
+     "confianca": "media"
+    }
+   ]
+  },
+  {
+   "identificador": "REAL-PORTO",
+   "sha256": "bf9e103a33e941e9df44a30d553e429825d66b48f658c17e3be807bec8be1145",
+   "ramo": "do",
+   "tipo": "condicoes_gerais",
+   "seguradora": "Porto Seguro Cia de Seguros Gerais",
+   "processo_susep": "15414.901349/2019-94",
+   "versao": "3617 – FEVEREIRO/22 (Vigência a partir de 01/02/2022)",
+   "paginas": 52,
+   "clausulas": [
+    {
+     "codigo": "ESC-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 11,
+     "secao": "2.41 Segurado / 2.9 Conselheiro / 2.18 Diretor",
+     "evidencia": "Não são considerados Segurados qualquer gestor de risco, advogado, contador, auditor ou consultor que não seja empregado da Sociedade",
+     "justificativa": "A definição base abrange conselheiros (inclusive conselho fiscal), diretores e empregados, exclui liquidante/administrador judicial, e cônjuge/espólio só entram via Cobertura Adicional contratada.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 32,
+     "secao": "Condições Especiais – Coberturas Básicas – Garantia A",
+     "evidencia": "A Seguradora pagará as Perdas Indenizáveis de cada Segurado sempre que tal Segurado não tenha sido indenizada pela Sociedade por tal Perda Indenizável",
+     "justificativa": "Side A é cobertura básica automática; há limite em excesso dedicado a conselheiros e diretores apenas como Cobertura Adicional opcional.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 32,
+     "secao": "Condições Especiais – Garantia B / 5.4",
+     "evidencia": "Se uma Sociedade efetuar o pagamento de uma Perda Indenizável de um Segurado coberta pela Apólice, a Seguradora reembolsará a Sociedade por tal Perda Indenizável.",
+     "justificativa": "O reembolso à Sociedade é cobertura básica, sujeito à Franquia ou Participação Obrigatória definida na Especificação (item 5.4).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "ESC-04",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 42,
+     "secao": "Cobertura Adicional para a Sociedade por Responsabilidade de Gestão – Gestão Protegida",
+     "evidencia": "a Seguradora pagará as Perdas Indenizáveis de uma Sociedade resultante de uma Reclamação contra a Sociedade por responsabilidade de gestão",
+     "justificativa": "A cobertura da pessoa jurídica é opcional, limitada a LMI próprio dentro do LMG compartilhado e acompanhada de exclusões adicionais (contrato, PI, concorrência, tributos, cyber).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-05",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 17,
+     "secao": "6.1 Âmbito Geográfico",
+     "evidencia": "esta Apólice cobrirá qualquer Reclamação realizada contra um Segurado em qualquer lugar do mundo",
+     "justificativa": "A cobertura é mundial e não há exclusão geral de jurisdição EUA/Canadá, apenas a exclusão de reclamações nos EUA movidas por segurados (4.8), com exceções.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "ESC-06",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 36,
+     "secao": "2.45 Subsidiária / Extensão de Cobertura para Novas Subsidiárias",
+     "evidencia": "possuir ativos totais que excedem o percentual, constante na Especificação da Apólice, dos ativos totais consolidados do Tomador",
+     "justificativa": "Novas controladas só são incluídas se contratada a extensão, sujeitas a teto de ativos e excluídas instituições financeiras, companhias abertas e sociedades fora do Brasil.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "LIM-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 5,
+     "secao": "1.8 / 5.1 Limite Máximo de Garantia da Apólice",
+     "evidencia": "O Limite Máximo de Garantia da Apólice é o valor total que pode ser devido pela Seguradora por força de esta Apólice.",
+     "justificativa": "O LMG é definido como limite agregado da apólice para o Período de Vigência e Prazo Adicional, com valor fixado na Especificação.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 16,
+     "secao": "5.1 / 5.3 Limite Agregado",
+     "evidencia": "Cada Limite Máximo de Indenização por Cobertura Contratada indicado na Especificação da Apólice é o valor máximo que a Seguradora indenizará",
+     "justificativa": "Cada cobertura e extensão tem Limite Máximo de Indenização próprio dentro do LMG, com sublimites específicos (ex.: 20% para aprovação retroativa em Eventos Regulatórios).",
+     "confianca": "media"
+    },
+    {
+     "codigo": "LIM-03",
+     "nivel": "excluida",
+     "opcional": false,
+     "pagina": 16,
+     "secao": "5.1 / 5.3",
+     "evidencia": "não estão sujeitos à reintegração antes ou depois de exauridos",
+     "justificativa": "A apólice afasta expressamente a reintegração do LMG e dos limites por cobertura.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "LIM-04",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 16,
+     "secao": "5.4 Franquia ou Participação Obrigatória do Segurado",
+     "evidencia": "a Seguradora indenizará apenas o valor da Perda Indenizável que exceder a Franquia ou Participação Obrigatória",
+     "justificativa": "A franquia incide sobre perdas indenizáveis pela Sociedade e não se aplica ao Side A em caso de proibição legal ou insolvência, mas há possibilidade de coparticipação do segurado.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 16,
+     "secao": "5.1 / 5.3",
+     "evidencia": "inclusive a título de Custos De Defesa, deverá corresponder à responsabilidade da Seguradora por Perda Indenizável dentro do Limite Agregado.",
+     "justificativa": "Os custos de defesa integram a Perda Indenizável e consomem o LMG/Limite Agregado.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 18,
+     "secao": "6.6 Adiantamentos de Custos De Defesa",
+     "evidencia": "A Seguradora adiantará ao Segurado, antes da decisão final acerca da procedência da Reclamação, os Custos De Defesa",
+     "justificativa": "Há adiantamento antes da decisão final, com pagamento após faturas detalhadas (6.8), sem prazo em dias e sujeito a consentimento prévio e reembolso se não devido.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 7,
+     "secao": "2.11 Custos De Defesa",
+     "evidencia": "É garantida ao Segurado a livre escolha ou a utilização de profissionais referenciados para sua defesa.",
+     "justificativa": "A escolha do advogado é livre, mas os Custos de Defesa dependem do prévio consentimento por escrito da Seguradora.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "DEF-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 17,
+     "secao": "6.2 Boa Fé / 4.1 Conduta",
+     "evidencia": "As declarações do Tomador serão imputadas a todos os Segurados",
+     "justificativa": "A separabilidade existe para a Exclusão Conduta, mas as declarações da proposta são imputadas a todos os Segurados.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "DEF-05",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 32,
+     "secao": "4.12 Multas e Penalidades / Extensão de Cobertura para Multas e Penalidades",
+     "evidencia": "Seguradora pagará, quaisquer multas ou penalidades cíveis ou administrativas impostas à Segurado sempre que consideradas seguráveis pela legislação aplicável",
+     "justificativa": "Multas são excluídas na base mas oferecidas por extensão opcional com LMI próprio, excluindo multas contratuais, tributárias (salvo cláusula particular), nos EUA e criminais.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 5,
+     "secao": "1.5 Data Limite de Retroatividade / 8.4",
+     "evidencia": "a ser pactuada pelas partes por ocasião da contratação inicial ou da renovação do seguro",
+     "justificativa": "A data de retroatividade é regulada e fixada na Especificação, com garantia de manutenção nas renovações.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-02",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 29,
+     "secao": "8.20 Prazo Adicional / 8.21 Extensão do Prazo Adicional",
+     "evidencia": "a concessão da extensão do Prazo Adicional pelo período de 12 meses a contar do término do Prazo Adicional",
+     "justificativa": "O Prazo Adicional consta da Especificação e há extensão opcional de 12 meses mediante prêmio adicional e aceitação, além de prazo perpétuo opcional para aposentados/demissionários.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "TMP-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 19,
+     "secao": "6.11 Aviso de Sinistro e Notificação / 1.9",
+     "evidencia": "Qualquer Segurado poderá, durante o Período de Vigência, apresentar uma ou mais de uma Notificação.",
+     "justificativa": "A apólice é à base de reclamações com notificação e aceita notificação de circunstâncias durante a vigência, sem prazo específico após o conhecimento.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "TMP-04",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 25,
+     "secao": "8.9 Alteração no Risco – (i) Operações",
+     "evidencia": "Todavia, a Seguradora continua responsável pelos Atos Danosos ocorridos até a data de efetivação da Operação.",
+     "justificativa": "Na mudança de controle a cobertura fica limitada a atos anteriores até o fim da vigência, sem previsão de run-off plurianual contratável.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-01",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 13,
+     "secao": "4.1 Conduta",
+     "evidencia": "somente serão aplicados no caso de que qualquer dos atos acima descritos sejam reconhecidos como tal por decisão final judicial ou arbitral",
+     "justificativa": "A exclusão de dolo/culpa grave exige decisão final ou admissão escrita, tem separabilidade entre segurados e os custos de defesa são adiantados até lá.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-02",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 15,
+     "secao": "4.8 Reclamações nos EUA Apresentadas por Segurados",
+     "evidencia": "for proposta por administrador judicial ou liquidante de uma Sociedade ou Entidade Externa",
+     "justificativa": "Nas Condições Gerais a exclusão entre segurados limita-se a reclamações nos EUA e tem exceções amplas, embora existam cláusulas particulares opcionais de exclusão mais ampla.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-03",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 13,
+     "secao": "4.2 Danos Ambientais",
+     "evidencia": "qualquer dano ambiental efetivo, suposto ou ameaçado, incluindo, mas não limitado a descarga, dispensa, liberação ou vazamento de Poluentes",
+     "justificativa": "A exclusão base é ampla e alcança inclusive a defesa, só sendo substituída por exclusão de custos de limpeza se contratada a Cobertura Adicional ambiental.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "EXC-04",
+     "nivel": "restrita",
+     "opcional": true,
+     "pagina": 45,
+     "secao": "4.19 Evento de Privacidade e Falha de Segurança (Gestão Protegida)",
+     "evidencia": "Qualquer reclamação resultante de, baseada em ou atribuível a qualquer Evento de Privacidade ou Falha de Segurança.",
+     "justificativa": "A exclusão cibernética ampla aparece apenas na Cobertura Adicional Gestão Protegida, sem ressalva para falha de supervisão do administrador.",
+     "confianca": "baixa"
+    },
+    {
+     "codigo": "EXC-05",
+     "nivel": "restrita",
+     "opcional": false,
+     "pagina": 14,
+     "secao": "4.7 Reclamações e Circunstâncias Anteriores",
+     "evidencia": "antes da Data de Continuidade, qualquer Segurado ou Sociedade tivesse conhecimento que tais fatos poderiam resultar em uma Reclamação contra um Segurado",
+     "justificativa": "Há data de corte objetiva (Data de Continuidade), mas o conhecimento de qualquer Segurado ou da Sociedade é imputado a todos.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-01",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 23,
+     "secao": "8.5 Cancelamento",
+     "evidencia": "total ou parcialmente, a qualquer tempo, mediante acordo entre as partes contratantes",
+     "justificativa": "O cancelamento ocorre por exaustão do LMG, acordo entre as partes (com devolução proporcional) ou perda de direitos, com aviso de 30 dias na agravação de risco.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "OPE-02",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 42,
+     "secao": "Cláusula Específica de Arbitragem / 8.27 Foro",
+     "evidencia": "dirimidas de acordo com as Regras de Arbitragem da Câmara de Comércio Brasil Canadá por um ou mais árbitros",
+     "justificativa": "A arbitragem é opcional (marcada na proposta), com câmara CCBC indicada; não optada, vale o foro do domicílio do Tomador.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-03",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 28,
+     "secao": "8.13 Sub-rogação",
+     "evidencia": "a Seguradora não deverá exercer seus direitos de sub-rogação contra um Segurado com relação a uma Reclamação a menos que",
+     "justificativa": "Há renúncia expressa à sub-rogação contra segurados, ressalvada a aplicação da Exclusão Conduta.",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-04",
+     "nivel": "ampla",
+     "opcional": false,
+     "pagina": 28,
+     "secao": "8.18 Ordem dos Pagamentos",
+     "evidencia": "primeiro, será feito pagamento por Perda Indenizável coberta pela Cobertura Básica Garantia A desta Apólice",
+     "justificativa": "Existe cláusula de ordem de pagamentos com prioridade expressa para o Side A (Garantia A).",
+     "confianca": "alta"
+    },
+    {
+     "codigo": "OPE-05",
+     "nivel": "padrao",
+     "opcional": false,
+     "pagina": 19,
+     "secao": "6.10 Atualização Monetária da Indenização / 8.29",
+     "evidencia": "com base na variação positiva do IPCA/IBGE",
+     "justificativa": "A apólice prevê correção da indenização pelo IPCA e encargos de tradução, mas não regula moeda do limite nem critério de conversão cambial.",
+     "confianca": "baixa"
+    },
+    {
+     "codigo": "AGR-01",
+     "nivel": "ausente",
+     "opcional": false,
+     "pagina": 9,
+     "secao": "2.27 Órgão Governamental",
+     "evidencia": "Qualquer órgão regulador, agência reguladora, autarquia ou qualquer outro órgão autorizado pelo Governo a investigar uma Sociedade ou Segurado.",
+     "justificativa": "Não há menção a crédito rural, Proagro ou Banco Central como regulador; só existe a definição genérica de órgão governamental.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "AGR-02",
+     "nivel": "padrao",
+     "opcional": true,
+     "pagina": 52,
+     "secao": "Cobertura Adicional de Responsabilidade dos Administradores (D&O) por Danos Ambientais",
+     "evidencia": "pagará os Custos de Defesa do Segurado decorrente de Ato Danoso ou Fato Gerador suposto ou real que dê origem a Reclamação de Danos Ambientais",
+     "justificativa": "Cobertura adicional opcional (processo SUSEP próprio) cobre defesa e perdas de administradores em reclamações ambientais, mantendo exclusão de custos de limpeza.",
+     "confianca": "media"
+    },
+    {
+     "codigo": "AGR-03",
+     "nivel": "excluida",
+     "opcional": false,
+     "pagina": 14,
+     "secao": "4.5 Falência",
+     "evidencia": "a) qualquer Sociedade ter apresentado qualquer situação relacionada à lei de falências (Lei nº 11.101 de 9 de fevereiro de 2005)",
+     "justificativa": "A exclusão de Falência afasta reclamações apresentadas após qualquer situação da Lei 11.101 (inclusive recuperação judicial) e o administrador judicial não é Segurado.",
+     "confianca": "media"
+    }
+   ]
+  },
+  {
+   "identificador": "REAL-GARANTIA-1",
+   "sha256": "65959cc4519d49fb0d5ceab1bfffdcd2f507ff586c7889d363641992f2c9cc86",
+   "ramo": "garantia",
+   "tipo": "apolice",
+   "paginas": 21,
+   "observacao": "Apólice emitida de Seguro Garantia com dados reais de empresas e pessoas; o arquivo não é distribuído e nenhum dado dele é registrado aqui."
+  },
+  {
+   "identificador": "REAL-GARANTIA-2",
+   "sha256": "3089beb8364992c7fd679d49b17bbaaac2160546caa3679684d3704284e509bb",
+   "ramo": "garantia",
+   "tipo": "apolice",
+   "paginas": 13,
+   "observacao": "Apólice emitida de Seguro Garantia com dados reais de empresas e pessoas; o arquivo não é distribuído e nenhum dado dele é registrado aqui."
+  }
+ ]
+}

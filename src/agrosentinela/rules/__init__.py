@@ -1,0 +1,1 @@
+"""Subpacote rules do AgroSentinela."""

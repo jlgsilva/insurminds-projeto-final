@@ -1,0 +1,1 @@
+"""Subpacote utils do AgroSentinela."""

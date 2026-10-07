@@ -1,0 +1,29 @@
+{
+ "deterministico": {
+  "documentos": 5,
+  "ramo_correto": 5,
+  "tipo_correto": 5,
+  "fora_do_escopo_recusados": 2,
+  "fora_do_escopo_total": 2,
+  "do_documentos": 3,
+  "do_paginas": 231,
+  "acuracia_presenca": 83.3,
+  "acuracia_nivel": 39.6,
+  "cobertura_presentes": 85.8,
+  "seguradora_ok": 3,
+  "por_documento": {
+   "REAL-AXA": {
+    "presenca": 75.0,
+    "nivel": 43.8
+   },
+   "REAL-ALLIANZ": {
+    "presenca": 93.8,
+    "nivel": 34.4
+   },
+   "REAL-PORTO": {
+    "presenca": 81.2,
+    "nivel": 40.6
+   }
+  }
+ }
+}

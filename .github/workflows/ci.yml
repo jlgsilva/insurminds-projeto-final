@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  testes:
+    # A aplicação é publicada no Streamlit Cloud, que roda Linux, mas é
+    # desenvolvida e avaliada no Windows. Essa combinação produz uma classe de
+    # defeito que só aparece na máquina de quem avalia — codificação de
+    # arquivo, separador de caminho, saída de console. Testar nos dois sistemas
+    # é o que transforma "deve funcionar no Windows" em fato verificado.
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} · Python ${{ matrix.python-version }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.12"]
+
+    # Declarado aqui, e não em linha, porque `PYTHONPATH=x comando` é sintaxe
+    # de shell Unix e não funciona no PowerShell do runner do Windows.
+    env:
+      PYTHONPATH: src
+      PYTHONUTF8: "1"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Gerar a amostra de demonstração
+        run: python -m agrosentinela.data.seed_builder
+
+      - name: Testes
+        run: pytest -q
+
+      - name: Pipeline de ponta a ponta (offline, sem IA)
+        run: python -m agrosentinela.orchestrator --clima sintetico --cenario seca --sem-llm --ignorar-supressao --sem-persistencia --max-mensagens 8 --exportar saida/
+
+      - name: Gerar o resumo executivo e o DOCX
+        # Sem wkhtmltopdf no runner o PDF não sai, mas o Markdown e o DOCX
+        # saem — e é justamente o caminho do DOCX, escrito à mão em OOXML,
+        # que interessa ver funcionando nos dois sistemas.
+        run: python scripts/gerar_resumo_executivo.py --sem-pipeline
+
+      - name: Publicar os artefatos da execução
+        uses: actions/upload-artifact@v4
+        with:
+          name: execucao-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: saida/

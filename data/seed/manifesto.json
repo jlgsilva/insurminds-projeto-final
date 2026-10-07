@@ -1,0 +1,47 @@
+{
+  "gerado_em": "2026-09-12T20:54:22",
+  "semente": 20260913,
+  "conjuntos": {
+    "municipios": {
+      "linhas": 103,
+      "colunas": 10
+    },
+    "carteira": {
+      "linhas": 3657,
+      "colunas": 39
+    },
+    "proagro_sinistros": {
+      "linhas": 2446,
+      "colunas": 21
+    },
+    "serie_credito": {
+      "linhas": 3024,
+      "colunas": 6
+    },
+    "glebas": {
+      "linhas": 2906,
+      "colunas": 13
+    },
+    "exposicao": {
+      "linhas": 3657,
+      "colunas": 14
+    },
+    "contexto_externo": {
+      "linhas": 103,
+      "colunas": 24
+    }
+  },
+  "aviso": "Dados sintéticos de demonstração. Reproduzem o esquema e as proporções dos microdados do Sicor/BCB, mas NÃO são dados reais.",
+  "eventos_modelados": [
+    "seca",
+    "chuva_excessiva",
+    "chuva_intensa",
+    "granizo",
+    "geada",
+    "onda_calor",
+    "vendaval",
+    "umidade_colheita"
+  ],
+  "cobertura_glebas": 0.608,
+  "fontes_externas": "mapbiomas=referência embutida; monitor_secas=referência embutida; nasa_power=referência embutida; psr_mapa=referência embutida; queimadas_inpe=referência embutida"
+}

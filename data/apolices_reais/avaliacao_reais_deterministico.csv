@@ -1,0 +1,6 @@
+documento,paginas,ramo_esperado,ramo_detectado,tipo_esperado,tipo_detectado,gravado_na_base,secoes,segundos,metodo,seguradora_lida,seguradora_ok,acuracia_presenca,acuracia_nivel,cobertura_presentes
+REAL-AXA,104,do,do,condicoes_gerais,condicoes_gerais,True,210,12.6,deterministico,AXA Seguros,True,75.0,43.8,77.8
+REAL-ALLIANZ,75,do,do,condicoes_gerais,condicoes_gerais,True,224,13.2,deterministico,Allianz Seguros S.A.,True,93.8,34.4,96.7
+REAL-PORTO,52,do,do,condicoes_gerais,condicoes_gerais,True,199,9.3,deterministico,Porto Seguro Cia de Seguros Gerais,True,81.2,40.6,82.8
+REAL-GARANTIA-1,21,garantia,garantia,apolice,apolice,False,41,2.2,deterministico,,,,,
+REAL-GARANTIA-2,13,garantia,garantia,apolice,apolice,False,28,1.7,deterministico,,,,,

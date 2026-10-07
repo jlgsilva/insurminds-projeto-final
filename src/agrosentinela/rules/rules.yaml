@@ -1,0 +1,428 @@
+# =============================================================================
+# AgroSentinela — Motor de Regras de Negócio (declarativo)
+# =============================================================================
+#
+# Cada regra é avaliada para a combinação  (operação de crédito rural) x (dia de
+# previsão)  e produz, quando satisfeita, um ALERTA candidato.
+#
+# Campos:
+#   id                 identificador estável, citado nas mensagens (auditoria)
+#   nome               rótulo legível
+#   evento             código do evento climático (ver rules/catalogo.py)
+#   descricao          o que a regra captura, em linguagem de negócio
+#   quando             expressão booleana sobre os INDICADORES do município/dia
+#   severidade_base    informativo | atencao | alerta | critico
+#   escalonamento      lista de condições que elevam a severidade
+#   fases_criticas     fases fenológicas que tornam a regra mais grave
+#   bonus_fase         acréscimo no score quando a operação está em fase crítica
+#   personas           quem deve ser notificado
+#   janela_acao_h      prazo recomendado para a ação (horas)
+#   acao               ação recomendada, em imperativo
+#   base_tecnica       fundamentação agronômica/normativa
+#   cobertura_proagro  se o evento é, em regra, coberto pelo Proagro
+#
+# Indicadores disponíveis (calculados em weather/indicadores.py):
+#   prec_1d prec_3d prec_7d prec_14d prec_max_24h dias_com_chuva_7d
+#   dias_secos_consecutivos dias_secos_passados balanco_hidrico_7d
+#   balanco_hidrico_14d et0_7d tmin_min tmax_max dias_tmin_le_3 dias_tmin_le_0
+#   dias_tmax_ge_32 dias_tmax_ge_35 amplitude_max rajada_max vento_medio_max
+#   cape_max prob_granizo umidade_media umidade_min prob_prec_max
+#   Contexto da operação: fase (str), progresso_ciclo, dias_para_colheita,
+#   dias_para_vencimento, tem_cobertura, area_ha, valor_credito,
+#   sinistralidade_municipio, freq_evento_municipio, irrigada (bool)
+# =============================================================================
+
+versao: "1.0.0"
+atualizado_em: "2026-09-11"
+
+regras:
+
+  # ----------------------------------------------------------------- SECA ---
+  - id: R-SEC-01
+    nome: "Veranico prolongado com déficit hídrico"
+    evento: seca
+    descricao: >
+      Sequência longa de dias sem chuva significativa combinada a balanço
+      hídrico negativo, caracterizando veranico com potencial de perda.
+    quando: "dias_secos_consecutivos >= 10 and balanco_hidrico_14d <= -30"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "dias_secos_consecutivos >= 15 and balanco_hidrico_14d <= -50"
+        severidade: alerta
+      - quando: "dias_secos_consecutivos >= 21 or balanco_hidrico_14d <= -80"
+        severidade: critico
+    fases_criticas: [floracao, enchimento, brotacao, frutificacao, entressafra_forrageira]
+    bonus_fase: 18
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista, assessor_rural, gerente_credito_rural, subscricao_seguradora, atuario_precificacao, revenda_insumos]
+    janela_acao_h: 72
+    acao: >
+      Priorizar irrigação onde houver, reduzir tráfego e revolvimento do solo,
+      registrar a ocorrência com data e fotos e avisar o agente financeiro.
+    base_tecnica: >
+      Déficit hídrico em floração e enchimento de grãos é a principal causa de
+      acionamento do Proagro em culturas anuais de sequeiro.
+    cobertura_proagro: true
+
+  - id: R-SEC-02
+    nome: "Seca severa em lavoura sem irrigação"
+    evento: seca
+    descricao: >
+      Agravamento da regra de veranico quando a operação não declara irrigação
+      no Sicor (CD_TIPO_IRRIGACAO indicando sequeiro).
+    quando: "dias_secos_consecutivos >= 14 and not irrigada and balanco_hidrico_14d <= -45"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "dias_secos_consecutivos >= 25"
+        severidade: critico
+    fases_criticas: [floracao, enchimento]
+    bonus_fase: 22
+    personas: [produtor_familiar, produtor_empresarial, assistencia_tecnica, mei_extensionista, assessor_rural, gerente_credito_rural, perito_regulador]
+    janela_acao_h: 48
+    acao: >
+      Avaliar antecipação de comunicação de perda ao agente do Proagro e
+      planejar manejo de emergência (cobertura de solo, redução de estande).
+    base_tecnica: >
+      Lavouras de sequeiro não têm mecanismo de mitigação imediata; a perda
+      tende a se materializar em 2 a 3 semanas de déficit continuado.
+    cobertura_proagro: true
+
+  - id: R-SEC-03
+    nome: "Estresse hídrico em pastagem e pecuária"
+    evento: seca
+    descricao: >
+      Estiagem que compromete a oferta de forragem e a disponibilidade de água
+      para o rebanho.
+    quando: "dias_secos_consecutivos >= 18 and cultura_grupo in ['Pecuária']"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "dias_secos_consecutivos >= 30"
+        severidade: critico
+    fases_criticas: [entressafra_forrageira, rebrota]
+    bonus_fase: 12
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista, revenda_insumos]
+    janela_acao_h: 96
+    acao: >
+      Planejar suplementação volumosa, ajustar taxa de lotação e verificar
+      reservatórios e bebedouros.
+    base_tecnica: >
+      A resposta da pastagem ao déficit hídrico é rápida e a recomposição é
+      lenta; a decisão de suplementar precisa anteceder a perda de condição
+      corporal.
+    cobertura_proagro: false
+
+  # ------------------------------------------------------- CHUVA EXCESSIVA ---
+  - id: R-CHU-01
+    nome: "Chuva acumulada excessiva"
+    evento: chuva_excessiva
+    descricao: >
+      Precipitação acumulada em 7 dias muito acima do que a cultura tolera,
+      com risco de encharcamento, asfixia radicular e doenças.
+    quando: "prec_7d >= 120"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "prec_7d >= 180"
+        severidade: alerta
+      - quando: "prec_7d >= 260"
+        severidade: critico
+    fases_criticas: [semeadura, maturacao, colheita]
+    bonus_fase: 15
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista, gerente_credito_rural, trading_originacao, perito_regulador]
+    janela_acao_h: 72
+    acao: >
+      Conferir drenagem de carreadores e terraços, adiar aplicações e avaliar
+      antecipação de colheita nos talhões mais maduros.
+    base_tecnica: >
+      Excesso hídrico é evento coberto pelo Proagro e figura entre as
+      principais causas de comprovação de perdas nas regiões Sul e Sudeste.
+    cobertura_proagro: true
+
+  - id: R-CHU-02
+    nome: "Chuva intensa em 24 horas"
+    evento: chuva_intensa
+    descricao: >
+      Evento convectivo concentrado, com risco de erosão, alagamento e perda
+      localizada de estande.
+    quando: "prec_max_24h >= 50"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "prec_max_24h >= 80"
+        severidade: alerta
+      - quando: "prec_max_24h >= 120"
+        severidade: critico
+    fases_criticas: [semeadura, colheita]
+    bonus_fase: 12
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista]
+    janela_acao_h: 24
+    acao: >
+      Verificar áreas de baixada e curvas de nível, proteger insumos e
+      documentar eventuais danos imediatamente após o evento.
+    base_tecnica: >
+      Precipitações acima de 50 mm em 24 h superam a capacidade de infiltração
+      da maioria dos solos agrícolas manejados.
+    cobertura_proagro: true
+
+  - id: R-CHU-03
+    nome: "Janela de colheita comprometida"
+    evento: umidade_colheita
+    descricao: >
+      Chuva recorrente e umidade elevada durante a janela de colheita declarada
+      na própria operação (DT_INIC_COLHEITA / DT_FIM_COLHEITA do Sicor).
+    quando: "dias_para_colheita <= 21 and dias_com_chuva_7d >= 4 and umidade_media >= 75"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "dias_com_chuva_7d >= 6 and prec_7d >= 80"
+        severidade: alerta
+      - quando: "dias_para_colheita <= 7 and dias_com_chuva_7d >= 6 and prec_7d >= 120"
+        severidade: critico
+    fases_criticas: [maturacao, colheita]
+    bonus_fase: 20
+    personas: [produtor_empresarial, cooperativa, assistencia_tecnica, assessor_rural, corretor_associacao, trading_originacao]
+    janela_acao_h: 48
+    acao: >
+      Reprogramar a colheita para as janelas secas, reservar capacidade de
+      secagem e classificar lotes por umidade de grão.
+    base_tecnica: >
+      A janela de colheita consta da própria operação registrada no Sicor, o
+      que permite alertar somente quem está efetivamente nessa fase.
+    cobertura_proagro: false
+
+  # -------------------------------------------------------------- GRANIZO ---
+  - id: R-GRA-01
+    nome: "Probabilidade elevada de granizo"
+    evento: granizo
+    descricao: >
+      Ambiente convectivo severo estimado por CAPE elevado associado a rajadas
+      fortes e precipitação concentrada.
+    quando: "prob_granizo >= 45"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "prob_granizo >= 65"
+        severidade: critico
+    fases_criticas: [floracao, enchimento, maturacao, frutificacao]
+    bonus_fase: 20
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista, corretor_associacao, subscricao_seguradora, perito_regulador]
+    janela_acao_h: 24
+    acao: >
+      Recolher máquinas e insumos, proteger estruturas e animais e, em
+      fruticultura, verificar telas antigranizo.
+    base_tecnica: >
+      O granizo é evento coberto pelo Proagro e de altíssima severidade em
+      fruticultura e viticultura; a janela de ação é de poucas horas.
+    cobertura_proagro: true
+
+  # ---------------------------------------------------------------- GEADA ---
+  - id: R-GEA-01
+    nome: "Risco de geada"
+    evento: geada
+    descricao: >
+      Temperatura mínima em abrigo próxima do limiar de formação de geada — a
+      relva costuma ficar cerca de 3 °C mais fria que o abrigo.
+    quando: "tmin_min <= 4"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "tmin_min <= 2"
+        severidade: alerta
+      - quando: "tmin_min <= 0 or dias_tmin_le_3 >= 2"
+        severidade: critico
+    fases_criticas: [floracao, enchimento, brotacao, rebrota]
+    bonus_fase: 25
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista, subscricao_seguradora, perito_regulador, gestor_politica_publica]
+    janela_acao_h: 24
+    acao: >
+      Acionar medidas antigeada disponíveis (irrigação por aspersão, quebra-vento,
+      manejo de cobertura) e registrar a ocorrência com data e hora.
+    base_tecnica: >
+      Geada é evento coberto pelo Proagro. Em café e trigo, uma única noite em
+      fase sensível pode comprometer a safra inteira.
+    cobertura_proagro: true
+
+  - id: R-GEA-02
+    nome: "Geada severa em cultura perene"
+    evento: geada
+    descricao: >
+      Geada forte sobre café, uva ou maçã em fase de brotação ou frutificação,
+      com impacto plurianual.
+    quando: "tmin_min <= 2 and cultura in ['CAFE','UVA','MACA','LARANJA']"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "tmin_min <= 0"
+        severidade: critico
+    fases_criticas: [brotacao, frutificacao]
+    bonus_fase: 28
+    personas: [produtor_empresarial, cooperativa, assistencia_tecnica, assessor_rural, subscricao_seguradora, atuario_precificacao, gerente_credito_rural]
+    janela_acao_h: 18
+    acao: >
+      Mobilizar equipe noturna, avaliar proteção dos talhões mais baixos e
+      documentar por talhão para eventual comprovação de perdas.
+    base_tecnica: >
+      Em perenes o dano atinge a safra corrente e a seguinte, o que altera a
+      capacidade de pagamento de operações de investimento.
+    cobertura_proagro: true
+
+  # ----------------------------------------------------------- ONDA CALOR ---
+  - id: R-CAL-01
+    nome: "Onda de calor"
+    evento: onda_calor
+    descricao: >
+      Sequência de dias com temperatura máxima elevada, comprometendo
+      polinização, enchimento de grãos e bem-estar animal.
+    quando: "dias_tmax_ge_35 >= 3"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "dias_tmax_ge_35 >= 5 or tmax_max >= 39"
+        severidade: alerta
+      - quando: "dias_tmax_ge_35 >= 7 and balanco_hidrico_7d <= -25"
+        severidade: critico
+    fases_criticas: [floracao, enchimento, pleno_pastejo, manejo_sanitario]
+    bonus_fase: 18
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica, mei_extensionista, trading_originacao]
+    janela_acao_h: 48
+    acao: >
+      Deslocar irrigação para o período noturno, garantir sombra e água ao
+      rebanho e evitar manejo de animais nas horas mais quentes.
+    base_tecnica: >
+      Temperaturas acima de 35 °C na floração reduzem a viabilidade do pólen em
+      milho e soja; em bovinos elevam o índice de temperatura e umidade.
+    cobertura_proagro: true
+
+  # ------------------------------------------------------------- VENDAVAL ---
+  - id: R-VEN-01
+    nome: "Rajadas de vento severas"
+    evento: vendaval
+    descricao: >
+      Rajadas com potencial de acamamento, quebra de plantas e dano a
+      estruturas e telas de proteção.
+    quando: "rajada_max >= 60"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "rajada_max >= 80"
+        severidade: alerta
+      - quando: "rajada_max >= 100"
+        severidade: critico
+    fases_criticas: [enchimento, maturacao, colheita, frutificacao]
+    bonus_fase: 14
+    personas: [produtor_familiar, produtor_empresarial, cooperativa, assistencia_tecnica]
+    janela_acao_h: 24
+    acao: >
+      Recolher equipamentos, reforçar amarrações, proteger silos-bolsa e
+      inspecionar estruturas após a passagem do sistema.
+    base_tecnica: >
+      Vendaval é evento coberto pelo Proagro; em milho na fase de enchimento o
+      acamamento inviabiliza a colheita mecanizada.
+    cobertura_proagro: true
+
+  # ---------------------------------------- REGRAS DE NEGÓCIO / FINANCEIRAS ---
+  - id: R-COB-01
+    nome: "Exposição sem cobertura de risco"
+    evento: "*"
+    descricao: >
+      Operação em município sob evento de severidade alta que NÃO declara
+      Proagro nem seguro privado no campo CD_TIPO_SEGURO do Sicor.
+    quando: "not tem_cobertura and severidade_peso >= 3"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "not tem_cobertura and severidade_peso >= 4 and valor_credito >= 200000"
+        severidade: critico
+    fases_criticas: []
+    bonus_fase: 0
+    personas: [corretor_associacao, comercial_seguradora, gerente_credito_rural, produtor_empresarial, assessor_rural, gestor_politica_publica]
+    janela_acao_h: 120
+    acao: >
+      Avaliar os mecanismos de cobertura de risco disponíveis para a próxima
+      safra e registrar a exposição descoberta.
+    base_tecnica: >
+      A ausência de cobertura transfere integralmente o risco climático ao
+      produtor e, indiretamente, ao credor.
+    cobertura_proagro: false
+
+  - id: R-FIN-01
+    nome: "Vencimento próximo sob evento climático"
+    evento: "*"
+    descricao: >
+      Operação com vencimento em até 90 dias exposta a evento de severidade
+      alta — risco de prorrogação, renegociação ou inadimplência.
+    quando: "dias_para_vencimento <= 90 and severidade_peso >= 3"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "dias_para_vencimento <= 45 and severidade_peso >= 4"
+        severidade: critico
+    fases_criticas: []
+    bonus_fase: 0
+    personas: [gerente_credito_rural, subscricao_seguradora, revenda_insumos, gestor_politica_publica]
+    janela_acao_h: 120
+    acao: >
+      Sinalizar a operação para acompanhamento, avaliar prorrogação amparada no
+      MCR e antecipar tratativa com o mutuário.
+    base_tecnica: >
+      Eventos climáticos em fase final de ciclo se convertem rapidamente em
+      pressão sobre a capacidade de pagamento.
+    cobertura_proagro: false
+
+  - id: R-HIS-01
+    nome: "Município com histórico recorrente do evento"
+    evento: "*"
+    descricao: >
+      O município já apresenta frequência elevada de comprovação de perdas
+      (RCP) para este mesmo evento nos microdados do Proagro.
+    quando: "freq_evento_municipio >= 0.25 and severidade_peso >= 2"
+    severidade_base: atencao
+    escalonamento:
+      - quando: "freq_evento_municipio >= 0.45 and severidade_peso >= 3"
+        severidade: alerta
+    fases_criticas: []
+    bonus_fase: 8
+    personas: [subscricao_seguradora, atuario_precificacao, perito_regulador, gestor_politica_publica, cooperativa, gerente_credito_rural, pesquisa_imprensa]
+    janela_acao_h: 168
+    acao: >
+      Reservar capacidade de perícia, revisar apetite de risco para o município
+      e priorizar ações preventivas junto aos produtores.
+    base_tecnica: >
+      A série histórica de COP/RCP do Sicor permite estimar a probabilidade
+      condicional de sinistro dado o evento por município e cultura.
+    cobertura_proagro: false
+
+  - id: R-CON-01
+    nome: "Concentração de exposição financeira no município"
+    evento: "*"
+    descricao: >
+      Volume financiado exposto ao evento no município ultrapassa o limiar de
+      concentração definido pela política de risco.
+    quando: "exposicao_municipio >= 5000000 and severidade_peso >= 3"
+    severidade_base: alerta
+    escalonamento:
+      - quando: "exposicao_municipio >= 20000000 and severidade_peso >= 4"
+        severidade: critico
+    fases_criticas: []
+    bonus_fase: 0
+    personas: [gerente_credito_rural, subscricao_seguradora, atuario_precificacao, trading_originacao, gestor_politica_publica, pesquisa_imprensa]
+    janela_acao_h: 120
+    acao: >
+      Elevar o município para acompanhamento diário e comunicar a área de risco.
+    base_tecnica: >
+      Concentração geográfica é o principal fator de correlação de perdas em
+      carteiras de crédito rural.
+    cobertura_proagro: false
+
+# -----------------------------------------------------------------------------
+# Política de supressão (anti-fadiga de alerta)
+# -----------------------------------------------------------------------------
+supressao:
+  # Não reenviar a mesma (operação, regra, severidade) antes de N horas
+  janela_repeticao_h: 48
+  # Máximo de mensagens por destinatário por dia
+  max_msgs_destinatario_dia: 3
+  # Severidade mínima global para gerar mensagem
+  severidade_minima_global: atencao
+  # Consolidar múltiplos alertas do mesmo destinatário em uma única mensagem
+  consolidar_por_destinatario: true
+
+# -----------------------------------------------------------------------------
+# Score de risco: composição (0 a 100)
+# -----------------------------------------------------------------------------
+score:
+  peso_severidade: 40      # severidade do evento meteorológico
+  peso_fase: 25            # sensibilidade da fase fenológica
+  peso_historico: 15       # sinistralidade histórica do município/evento
+  peso_exposicao: 12       # valor financiado e área
+  peso_cobertura: 8        # ausência de cobertura agrava
+  limiar_notificacao: 35   # abaixo disso não vira mensagem

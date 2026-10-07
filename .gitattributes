@@ -1,0 +1,51 @@
+# ==========================================================================
+# Normalização de fim de linha
+#
+# Windows termina linha com CRLF; Linux e macOS, com LF. Sem esta
+# configuração, o Git avisa em cada arquivo ("LF will be replaced by CRLF")
+# e, pior, um arquivo salvo no Windows e outro no Linux aparecem como
+# "modificados" sem que ninguém tenha mudado nada.
+#
+# A regra: o repositório guarda tudo em LF; cada máquina recebe o formato
+# que o seu sistema usa. Arquivos binários ficam de fora, porque normalizar
+# um PNG ou um .gz corrompe o arquivo.
+# ==========================================================================
+
+* text=auto eol=lf
+
+# --- código e texto -------------------------------------------------------
+*.py      text eol=lf
+*.md      text eol=lf
+*.txt     text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.toml    text eol=lf
+*.csv     text eol=lf
+*.json    text eol=lf
+*.ipynb   text eol=lf
+*.html    text eol=lf
+*.cfg     text eol=lf
+*.ini     text eol=lf
+Makefile  text eol=lf
+LICENSE   text eol=lf
+
+# Scripts do PowerShell precisam de CRLF em versões antigas do Windows.
+*.ps1     text eol=crlf
+
+# --- binários: nunca tocar ------------------------------------------------
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.svg     text eol=lf
+*.pdf     binary
+*.docx    binary
+*.xlsx    binary
+*.pptx    binary
+*.zip     binary
+*.gz      binary
+*.parquet binary
+*.sqlite  binary
+*.ico     binary
+*.mp4     binary
+*.traineddata binary

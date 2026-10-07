@@ -1,0 +1,40 @@
+{
+ "linha_de_base": {
+  "ATA": {
+   "acuracia_campos": 100.0,
+   "acuracia_presenca": 98.3,
+   "acuracia_clausulas": 74.5
+  },
+  "IPE": {
+   "acuracia_campos": 90.0,
+   "acuracia_presenca": 94.7,
+   "acuracia_clausulas": 76.7
+  },
+  "JAC": {
+   "acuracia_campos": 87.1,
+   "acuracia_presenca": 96.3,
+   "acuracia_clausulas": 77.2
+  },
+  "MIN": {
+   "acuracia_campos": 100.0,
+   "acuracia_presenca": 97.5,
+   "acuracia_clausulas": 74.2
+  },
+  "MUT": {
+   "acuracia_campos": 99.3,
+   "acuracia_presenca": 45.0,
+   "acuracia_clausulas": 38.3
+  },
+  "XIQ": {
+   "acuracia_campos": 98.6,
+   "acuracia_presenca": 98.3,
+   "acuracia_clausulas": 74.8
+  }
+ },
+ "total_linha_de_base": {
+  "acuracia_campos": 95.8,
+  "acuracia_presenca": 88.3,
+  "acuracia_clausulas": 69.3
+ },
+ "apolices": 120
+}
